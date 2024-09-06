@@ -1,6 +1,4 @@
-console.log("yet")
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  console.log("yeet")
   if (message.action === "click-pencil") {
     var crosswordsButton = document.querySelector("#portal-game-toolbar > div > ul > li:nth-child(5) > button > i");
     crosswordsButton.click();
