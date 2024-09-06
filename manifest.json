@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "NYT Crosswords Keyboard Shortcuts",
+  "version": "0.1.0",
+  "description": "Helper for solving the NYT crossword.",
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+  "commands": {
+    "pencil": {
+      "suggested_key": {
+        "default": "Ctrl+E",
+        "mac": "Command+E"
+      },
+      "description": "Clicks on the Pencil button on the NYT Crossword"
+    },
+    "pause": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Space",
+        "mac": "Command+Shift+Space"
+      },
+      "description": "Pauses Crossword"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.nytimes.com/crosswords*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "content_security_policy": {}
+}
