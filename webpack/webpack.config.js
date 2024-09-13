@@ -1,24 +1,29 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
-    mode: "production",
+    mode: 'production',
     entry: {
-        service_worker: path.resolve(__dirname, "..", "src", "service_worker.ts"),
-        content: path.resolve(__dirname, "..", "src", "content.ts"),
-        popup: path.resolve(__dirname, "..", "src", "popup", "popup.ts"),
+        service_worker: path.resolve(
+            __dirname,
+            '..',
+            'src',
+            'service_worker.ts'
+        ),
+        content: path.resolve(__dirname, '..', 'src', 'content.ts'),
+        popup: path.resolve(__dirname, '..', 'src', 'popup', 'popup.ts'),
     },
     output: {
-        path: path.join(__dirname, "../dist"),
-        filename: "[name].js",
+        path: path.join(__dirname, '../dist'),
+        filename: '[name].js',
     },
     resolve: {
-        extensions: [".ts", ".js"],
+        extensions: ['.ts', '.js'],
     },
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
-                loader: "ts-loader",
+                loader: 'ts-loader',
                 exclude: /node_modules/,
             },
         ],
@@ -26,9 +31,20 @@ module.exports = {
     plugins: [
         new CopyPlugin({
             patterns: [
-                { from: ".", to: ".", context: "public", noErrorOnMissing: true },
-                { from: path.resolve(__dirname, "..", "src", "popup", "popup.html"), to: ".", context: "public", noErrorOnMissing: true },
-            ]
+                {from: '.', to: '.', context: 'public', noErrorOnMissing: true},
+                {
+                    from: path.resolve(
+                        __dirname,
+                        '..',
+                        'src',
+                        'popup',
+                        'popup.html'
+                    ),
+                    to: '.',
+                    context: 'public',
+                    noErrorOnMissing: true,
+                },
+            ],
         }),
     ],
 };
