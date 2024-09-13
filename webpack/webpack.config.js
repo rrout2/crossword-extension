@@ -44,6 +44,12 @@ module.exports = {
                     context: 'public',
                     noErrorOnMissing: true,
                 },
+                {
+                    from: path.resolve(__dirname, '..', 'manifest.json'),
+                    to: '.',
+                    context: 'public',
+                    noErrorOnMissing: true,
+                },
             ],
         }),
     ],

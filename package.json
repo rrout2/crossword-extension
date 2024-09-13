@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "content.js",
   "scripts": {
-    "build": "webpack --config webpack/webpack.config.js && cp manifest.json dist/manifest.json",
+    "build": "webpack --config webpack/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "gts lint",
     "clean": "gts clean",
@@ -13,18 +13,22 @@
     "pretest": "npm run compile",
     "posttest": "npm run lint"
   },
+  "pre-commit": [
+    "build"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@types/chrome": "^0.0.270",
+    "@types/node": "20.12.7",
     "copy-webpack-plugin": "^12.0.2",
+    "gts": "^5.3.1",
+    "pre-commit": "^1.2.2",
     "ts-loader": "^9.5.1",
     "typescript": "^5.6.2",
     "webpack": "^5.94.0",
-    "webpack-cli": "^5.1.4",
-    "gts": "^5.3.1",
-    "@types/node": "20.12.7"
+    "webpack-cli": "^5.1.4"
   }
 }
