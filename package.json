@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "content.js",
   "scripts": {
-    "build": "webpack --config webpack/webpack.config.js",
+    "build": "webpack --config webpack/webpack.config.js && zip -r dist.zip dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "gts lint",
     "clean": "gts clean",

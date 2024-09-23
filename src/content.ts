@@ -18,6 +18,37 @@ chrome.runtime.onMessage.addListener(message => {
             click(continueButton);
         }
     }
+
+    if (message.action === 'zoom-to-puzzle') {
+        const wholePuzzle = document.querySelector(
+            '.pz-game-screen'
+        ) as HTMLElement;
+        if (!wholePuzzle) {
+            console.warn('No puzzle found');
+            return;
+        }
+
+        const navBar = document.querySelector('.pz-nav') as HTMLElement;
+        const editotialContent = document.querySelector(
+            '#portal-editorial-content'
+        ) as HTMLElement;
+
+        if (wholePuzzle.style.transform) {
+            wholePuzzle.style.transform = '';
+            navBar.style.visibility = 'visible';
+            editotialContent.style.visibility = 'visible';
+        } else {
+            navBar.style.visibility = 'hidden';
+            editotialContent.style.visibility = 'hidden';
+            wholePuzzle.style.transition = 'transform 0.3s';
+            const scale = window.innerHeight / wholePuzzle.offsetHeight;
+            wholePuzzle.style.transform = `scale(${scale})`;
+            wholePuzzle.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+            });
+        }
+    }
 });
 
 function click(button: Element | null) {

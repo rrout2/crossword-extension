@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NYT Crosswords Keyboard Shortcuts",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Helper for solving the NYT crossword.",
   "permissions": [
     "activeTab"
@@ -23,6 +23,13 @@
         "mac": "Command+Shift+Space"
       },
       "description": "Pauses Crossword"
+    },
+    "zoom-to-puzzle": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Z",
+        "mac": "Command+Shift+Z"
+      },
+      "description": "Zooms to Crossword"
     }
   },
   "content_scripts": [
