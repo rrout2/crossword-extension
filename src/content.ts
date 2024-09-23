@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener(message => {
             '#portal-game-toolbar > div > ul > li.xwd__tool--button.xwd__timer--button > button > i'
         );
         const continueButton = document.querySelector(
-            '#portal-game-modals > div > div > div.xwd__modal--body.animate-opening > article > div.xwd__modal--button-container > button'
+            'article > div.xwd__modal--button-container > button'
         );
         if (pauseButton) {
             click(pauseButton);
