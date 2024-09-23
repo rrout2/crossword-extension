@@ -33,20 +33,24 @@ chrome.runtime.onMessage.addListener(message => {
             '#portal-editorial-content'
         ) as HTMLElement;
 
+        const toolbar = document.querySelector(
+            '.pz-game-toolbar'
+        ) as HTMLElement;
+
         if (wholePuzzle.style.transform) {
             wholePuzzle.style.transform = '';
             navBar.style.visibility = 'visible';
             editotialContent.style.visibility = 'visible';
+            toolbar.scrollIntoView(false);
         } else {
             navBar.style.visibility = 'hidden';
             editotialContent.style.visibility = 'hidden';
             wholePuzzle.style.transition = 'transform 0.3s';
             const scale = window.innerHeight / wholePuzzle.offsetHeight;
+
+            wholePuzzle.style.transformOrigin = 'top center';
             wholePuzzle.style.transform = `scale(${scale})`;
-            wholePuzzle.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
-            });
+            toolbar.scrollIntoView(true);
         }
     }
 });
