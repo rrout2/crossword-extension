@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener(message => {
     }
 });
 
-waitForElement('.xwd__tool--button', insertHtmlElement);
+waitForElement('.xwd__tool--button', insertMaximizeButton);
 
 function togglePuzzleZoom() {
     const wholePuzzle = document.querySelector(
@@ -64,18 +64,24 @@ function click(button: Element | null) {
         (button as HTMLElement).click();
     }
 }
-function insertHtmlElement() {
-    const iconBar = document.querySelector('.xwd__tool--button')!;
+function insertMaximizeButton() {
+    const iconBar = document.querySelector('.xwd__tool--button') as HTMLElement;
     if (!iconBar) {
         return;
     }
-    const newElement = document.createElement('button');
-    newElement.innerHTML = '<p>zoom!</p>';
-    newElement.style.cssText = 'z-index: 9999;';
-    newElement.onclick = () => {
+    const maximizeIcon = document.createElement('img');
+    maximizeIcon.style.width = '23px';
+    maximizeIcon.src = chrome.runtime.getURL('maximize.png');
+
+    const button = document.createElement('button');
+    button.appendChild(maximizeIcon);
+    button.onclick = () => {
         togglePuzzleZoom();
     };
-    iconBar.appendChild(newElement);
+
+    button.style.width = 'fit-content';
+    iconBar.style.width = 'fit-content';
+    iconBar.appendChild(button);
 }
 
 function waitForElement(selector: string, callback: () => void) {

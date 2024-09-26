@@ -50,6 +50,12 @@ module.exports = {
                     context: 'public',
                     noErrorOnMissing: true,
                 },
+                {
+                    from: path.resolve(__dirname, '..', 'src', '**', '*.png'),
+                    to: '.',
+                    context: 'src',
+                    noErrorOnMissing: true,
+                },
             ],
         }),
     ],
