@@ -47,6 +47,12 @@
   },
   "content_security_policy": {},
   "web_accessible_resources": [
-    {"resources": ["maximize.png"], "matches": ["https://www.nytimes.com/crosswords*"]}
-  ]
+    {"resources": ["maximize.png"], "matches": ["<all_urls>"]}
+  ],
+  "icons": {
+    "16": "extension_icon.png",
+    "32": "extension_icon.png",
+    "48": "extension_icon.png",
+    "128": "extension_icon.png"
+  }
 }
