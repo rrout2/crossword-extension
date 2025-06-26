@@ -1,9 +1,9 @@
 chrome.runtime.onMessage.addListener(message => {
     if (message.action === 'click-pencil') {
-        const crosswordsButton = document.querySelector(
-            '#portal-game-toolbar > div > ul > li:nth-child(5) > button > i'
+        const pencilButton = document.querySelector(
+            '#portal-game-toolbar > div > ul > li:nth-child(6) > button > i'
         );
-        click(crosswordsButton);
+        click(pencilButton);
     }
     if (message.action === 'pause-unpause') {
         const pauseButton = document.querySelector(
