@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "NYT Crosswords Keyboard Shortcuts",
-  "version": "0.3.1",
-  "description": "Helper for solving the NYT crossword.",
+  "version": "0.4.0",
+  "description": "Adds keyboard shortcuts for solving the NYT crossword.",
   "permissions": [
     "activeTab"
   ],
@@ -30,6 +30,13 @@
         "mac": "Command+Shift+Z"
       },
       "description": "Zooms to Crossword"
+    },
+    "jump-to-clue": {
+      "suggested_key": {
+        "default": "Ctrl+J",
+        "mac": "Command+J"
+      },
+      "description": "Jump to clue"
     }
   },
   "content_scripts": [

@@ -22,6 +22,10 @@ chrome.runtime.onMessage.addListener(message => {
     if (message.action === 'zoom-to-puzzle') {
         togglePuzzleZoom();
     }
+
+    if (message.action === 'jump-to-clue') {
+        jumpToClueSetup();
+    }
 });
 
 waitForElement('.xwd__tool--button', insertMaximizeButton);
@@ -101,4 +105,62 @@ function waitForElement(selector: string, callback: () => void) {
         childList: true,
         subtree: true,
     });
+}
+function jumpToClueSetup() {
+    const iconBar = document.querySelector('.xwd__tool--button') as HTMLElement;
+    if (!iconBar) {
+        return;
+    }
+    const existingClueInput = document.querySelector(
+        '#clue-input'
+    ) as HTMLElement;
+    if (existingClueInput) {
+        existingClueInput.remove();
+        return;
+    }
+
+    const clueInput = document.createElement('input');
+    clueInput.id = 'clue-input';
+    clueInput.style.width = '50px';
+    clueInput.type = 'number';
+
+    const actualJump = () => {
+        const clueLabels = document.querySelectorAll('.xwd__clue--label');
+        for (const clueLabel of clueLabels) {
+            if (clueLabel.textContent === clueInput.value) {
+                (clueLabel as HTMLElement).click();
+                break;
+            }
+        }
+    };
+
+    iconBar.appendChild(clueInput);
+
+    clueInput.onblur = () => {
+        clueInput.remove();
+    };
+
+    clueInput.onkeydown = e => {
+        e.preventDefault();
+        switch (e.key) {
+            case 'Enter':
+                actualJump();
+                return;
+            case 'Backspace':
+            case 'Delete':
+                clueInput.value = '';
+                clueInput.focus();
+                return;
+            case 'Escape':
+                clueInput.remove();
+                return;
+        }
+        const isNumber = /^[0-9]$/i.test(e.key);
+        if (!isNumber) {
+            return;
+        }
+        clueInput.value = `${clueInput.value.trim()}${e.key}`;
+    };
+
+    clueInput.focus();
 }
